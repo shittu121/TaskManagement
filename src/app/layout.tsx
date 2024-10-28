@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
+import { ThemeProvider } from "@/components/theme-provider"
+import { ModeToggle } from "@/components/ui/Darkmode";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +32,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="flex dark:bg-[#121212]">
+            <Sidebar />
+            <div className="">
+             <ModeToggle />
+             {children}
+            </div>
+            </div>
+        </ThemeProvider>
       </body>
     </html>
   );
