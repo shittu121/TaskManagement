@@ -1,14 +1,14 @@
-"use client";
+"use client"
+import React, { useState } from "react";
 import { navlinks } from "@/constants/navlinks";
 import { Navlink } from "@/types/navlink";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { isMobile } from "@/lib/mobileUtils";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-import { isMobile } from "@/lib/mobileUtils";
+import Image from "next/image";
 import Profile from "../../public/logo.svg";
 
 export const Sidebar = () => {
@@ -63,19 +63,22 @@ export const Navigation = ({
             isActive(link.href) && "bg-gray-200 dark:text-black"
           )}
         >
-          <link.icon
-            className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
-            )}
-          />
+          {/* Check if link.icon is defined before rendering */}
+          {link.icon && (
+            <link.icon
+              className={twMerge(
+                "h-4 w-4 flex-shrink-0",
+                isActive(link.href) && "text-sky-500"
+              )}
+            />
+          )}
           <span>{link.label}</span>
         </Link>
       ))}
 
       <div className="border-t border-t-white"></div>
       <div className="border bg-gray-200 dark:bg-[#1f1d1d]  dark:border-[#1f1d1d] h-40 w-48">
-
+        {/* Other content */}
       </div>
     </div>
   );
