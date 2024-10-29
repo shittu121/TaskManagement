@@ -23,7 +23,7 @@ export const Sidebar = () => {
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-6  z-[100] py-10 max-w-[20rem] lg:w-fit  fixed lg:relative  h-screen left-0 flex flex-col justify-between"
+            className="px-6  z-[100] bg-white border dark:bg-[#121212] dark:border-[#353232] py-10 max-w-[20rem] lg:w-fit  fixed lg:relative  h-screen left-0 flex flex-col justify-between"
           >
             <div className="flex-1 overflow-hidden">
               <SidebarHeader />
@@ -59,8 +59,8 @@ export const Navigation = ({
           href={link.href}
           onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
-            "text-white hover:text-primary transition duration-200  flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
-            isActive(link.href) && "bg-white shadow-lg text-primary"
+            "text-black dark:text-white hover:text-gray-500 transition duration-200  flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
+            isActive(link.href) && "bg-gray-200 dark:text-black"
           )}
         >
           <link.icon
@@ -74,7 +74,7 @@ export const Navigation = ({
       ))}
 
       <div className="border-t border-t-white"></div>
-      <div className="border bg-[#1f1d1d]  border-[#1f1d1d] h-40 w-48">
+      <div className="border bg-gray-200 dark:bg-[#1f1d1d]  dark:border-[#1f1d1d] h-40 w-48">
 
       </div>
     </div>
@@ -87,14 +87,10 @@ const SidebarHeader = () => {
       <Image
         src={Profile}
         alt="Avatar"
-        height="40"
-        width="40"
+        height="100"
+        width="100"
         className="object-cover object-top rounded-full flex-shrink-0"
       />
-      <div className="flex text-sm flex-col">
-        <p className="font-bold text-primary">Faruq Shittu</p>
-        <p className="font-light text-secondary">Developer</p>
-      </div>
     </div>
   );
 };

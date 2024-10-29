@@ -3,7 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/ui/Darkmode";
+import Header from "@/components/Header";
+import { Sidebarsm } from "@/components/SidebarSm"
 
 
 const geistSans = localFont({
@@ -38,12 +39,19 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex dark:bg-[#121212]">
-            <Sidebar />
-            <div className="">
-             <ModeToggle />
-             {children}
-            </div>
+            <div className="flex bg-neutral-100 overflow-y-hidden dark:bg-[#121212]">
+              <div className="sm-hidden md:hidden lg:flex">
+                <Sidebar />
+              </div>
+              <div className="lg:hidden">
+                <Sidebarsm />
+              </div>
+              <div className="w-full">
+               <Header />
+               <div className="m-5 h-full">
+                 {children}
+               </div>
+              </div>
             </div>
         </ThemeProvider>
       </body>

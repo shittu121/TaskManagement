@@ -2,13 +2,18 @@ import {
   IconArticle,
   IconBolt,
   IconBriefcase2,
-  IconMail,
   IconMessage2,
 } from "@tabler/icons-react";
+import { DashboardIcon } from "@radix-ui/react-icons";
 
 export const navlinks = [
   {
     href: "/",
+    label: "Dashboard",
+    icon: DashboardIcon,
+  },
+  {
+    href: "/task",
     label: "Task Tracker",
     icon: IconBolt,
   },
