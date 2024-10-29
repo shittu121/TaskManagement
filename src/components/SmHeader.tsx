@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
@@ -7,7 +6,6 @@ import { Navlink } from "@/types/navlink";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-
 
 const Headersm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,13 +49,14 @@ const Headersm = () => {
                 isActive(link.href) && "text-blue-500 dark:text-sky-500"
               )}
             >
-              <link.icon
+              {/* Use icon as a React component */}
+              {link.icon && <link.icon
                 size={26}
                 className={twMerge(
                   "flex-shrink-0 h-[26px] w-[26px]",
                   isActive(link.href) && "text-sky-500 dark:text-sky-500"
                 )}
-              />
+              />}
               {link.label}
             </Link>
           </li>
