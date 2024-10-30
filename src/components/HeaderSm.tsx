@@ -25,7 +25,7 @@ const HeaderSm = () => {
       };
   return (
     <div className='h-24 border flex z-[9999] bg-white dark:bg-[#121212] dark:border-[#353232] w-full'>
-        <div className="h-[40rem] px-4 mt-5">
+        <div className="h-[40rem] w-[16rem] px-4 mt-5">
             <PlaceholdersAndVanishInput
               placeholders={placeholders}
               onChange={handleChange}
