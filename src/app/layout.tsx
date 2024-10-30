@@ -48,7 +48,7 @@ export default function RootLayout({
                 <Sidebarsm />
               </div>
               <div className="w-full h-screen overflow-y-auto">
-                <div className="sm-hidden fixed lg:w-[65rem]">
+                <div className=" fixed lg:w-[65rem]">
                   <Header />
                 </div>
                 <div className="lg:hidden fixed w-full">
