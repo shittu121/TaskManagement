@@ -93,7 +93,7 @@ export function Sidebarsm() {
             </div>
           </div>
           <div>
-            <div className="font-normal flex space-x-3.5 pb-12 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
+            <div className="font-normal flex space-x-3.5 pb-16 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
                 <ModeTogglesm />
                 <label className="flex-shrink-0">Switch Mode</label>
             </div>
