@@ -1,13 +1,13 @@
 "use client";
 import React from 'react'
-import { ModeToggle } from './ui/Darkmode'
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import Togglesm from "@/components/SmToggle"
-import { SignUpModal } from './RegisterModal';
-import { LogInModal } from './LoginModal';
+import { ModeToggle } from './ui/Darkmode'
 
 
-const Header = () => {
+
+
+const HeaderSm = () => {
     const placeholders = [
         "What's the first rule of Fight Club?",
         "Who is Tyler Durden?",
@@ -24,19 +24,15 @@ const Header = () => {
         console.log("submitted");
       };
   return (
-    <div className='h-24 border flex bg-white dark:bg-[#121212] dark:border-[#353232] w-full'>
-        <div className="h-[40rem] w-full px-4 mt-5">
+    <div className='h-24 border flex z-[9999] bg-white dark:bg-[#121212] dark:border-[#353232] w-full'>
+        <div className="h-[40rem] px-4 mt-5">
             <PlaceholdersAndVanishInput
               placeholders={placeholders}
               onChange={handleChange}
               onSubmit={onSubmit}
             />
         </div>
-        <div className="sm-hidden space-x-5 md:hidden lg:flex">
-          <SignUpModal />
-          <LogInModal />
-        </div>
-        <div className="sm-hidden md:hidden lg:flex">
+        <div className="mt-7 sm-hidden">
           <ModeToggle />
         </div>
         <Togglesm />
@@ -44,4 +40,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default HeaderSm

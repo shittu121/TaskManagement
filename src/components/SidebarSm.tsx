@@ -14,8 +14,23 @@ import { cn } from "@/lib/utils";
 import { ModeTogglesm } from './ui/DarkmodeSm'
 
 
+
 export function Sidebarsm() {
   const links = [
+    {
+      label: "Sign up",
+      href: "/sign-up",
+      icon: (
+        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Sign in",
+      href: "/sign-in",
+      icon: (
+        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
     {
       label: "Dashboard",
       href: "#",
@@ -69,7 +84,7 @@ export function Sidebarsm() {
     >
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 overflow-hidden">
-          <div className="flex flex-col flex-1 py-4 overflow-y-hidden overflow-x-hidden">
+          <div className="flex flex-col flex-1 pt-8 overflow-y-hidden overflow-x-hidden">
             {open ? <Logo /> : <LogoIcon />}
             <div className="mt-10 flex flex-col gap-2">
               {links.map((link, idx) => (
@@ -78,7 +93,7 @@ export function Sidebarsm() {
             </div>
           </div>
           <div>
-            <div className="font-normal flex space-x-3.5 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
+            <div className="font-normal flex space-x-3.5 pb-12 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
                 <ModeTogglesm />
                 <label className="flex-shrink-0">Switch Mode</label>
             </div>

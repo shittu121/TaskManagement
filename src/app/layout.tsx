@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/Header";
 import { Sidebarsm } from "@/components/SidebarSm"
+import HeaderSm from "@/components/HeaderSm";
 
 
 const geistSans = localFont({
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-y-hidden`}
       >
         <ThemeProvider
             attribute="class"
@@ -46,9 +47,14 @@ export default function RootLayout({
               <div className="lg:hidden">
                 <Sidebarsm />
               </div>
-              <div className="w-full">
-               <Header />
-               <div className="m-5 h-full">
+              <div className="w-full h-screen overflow-y-auto">
+                <div className="sm-hidden fixed lg:w-[65rem]">
+                  <Header />
+                </div>
+                <div className="lg:hidden fixed w-full">
+                  <HeaderSm />
+                </div>
+               <div className="m-5 mt-32 lg:mt-36">
                  {children}
                </div>
               </div>

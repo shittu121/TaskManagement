@@ -13,7 +13,7 @@ export const navlinks = [
     icon: DashboardIcon,
   },
   {
-    href: "/task",
+    href: "/task-tracker",
     label: "Task Tracker",
     icon: IconBolt,
   },

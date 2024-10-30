@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-const Headersm = () => {
+const Togglesm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -18,8 +18,8 @@ const Headersm = () => {
   };
 
   return (
-    <div className="lg:hidden z-50">
-      <div className="flex mx-4 py-4 items-center justify-between">
+    <div className="lg:hidden z-[100]">
+      <div className="flex md:mx-5 py-4 items-center justify-between">
 
         {/* Mobile Toggle Button */}
         <div className="cursor-pointer mt-5" onClick={handleToggle}>
@@ -35,7 +35,7 @@ const Headersm = () => {
       <ul
         className={`transition-transform duration-300 ease-in-out transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } fixed top-0 right-0 h-full w-3/4 bg-white dark:bg-neutral-800 shadow-lg flex flex-col items-center py-20 px-10 space-y-4 z-40`}
+        } fixed top-0 right-0 h-full w-3/4 bg-white dark:bg-neutral-800 shadow-lg flex flex-col items-center py-20 px-10 space-y-4 z-[100]`}
       >
         <IoMdClose onClick={handleToggle} className="h-8 w-8 fixed top-5 right-5" />
 
@@ -66,4 +66,4 @@ const Headersm = () => {
   );
 };
 
-export default Headersm;
+export default Togglesm;
