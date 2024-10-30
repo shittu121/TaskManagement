@@ -37,7 +37,7 @@ export function Sidebarsm() {
               {open && (
                 <IoMdClose
                   onClick={() => setOpen(false)}
-                  className="text-red-500 h-7 w-7 dark:text-neutral-200 cursor-pointer"
+                  className="text-black h-7 w-7 dark:text-neutral-200 cursor-pointer"
                 />
               )}
             </div>

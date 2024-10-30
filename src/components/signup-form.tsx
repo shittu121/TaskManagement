@@ -41,10 +41,6 @@ export default function SignupForm() {
           Sign up &rarr;
           <BottomGradient />
         </button>
-        <div>
-      <h2>Test Input</h2>
-      <input type="text" placeholder="Test input" className="border p-2" />
-    </div>
       </form>
     </div>
   );
