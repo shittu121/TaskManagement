@@ -1,10 +1,12 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { ModeToggle } from './ui/Darkmode'
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import Togglesm from "@/components/SmToggle"
 import { SignUpModal } from './RegisterModal';
 import { LogInModal } from './LoginModal';
+import { SearchCommand } from '@/components/SearchCommand'
+
 
 
 const Header = () => {
@@ -15,12 +17,15 @@ const Header = () => {
         "Write a Javascript method to reverse a string",
         "How to assemble your own PC?",
       ];
+
+      const [isSearchOpen, setSearchOpen] = useState(false);
      
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
       };
       const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setSearchOpen(true);
         console.log("submitted");
       };
   return (
@@ -31,6 +36,12 @@ const Header = () => {
               onChange={handleChange}
               onSubmit={onSubmit}
             />
+            
+            {isSearchOpen && (
+              <SearchCommand
+                onClose={() => setSearchOpen(false)} // Add a way to close the modal
+              />
+            )}
         </div>
         <div className="sm-hidden space-x-5 md:hidden lg:flex">
           <SignUpModal />

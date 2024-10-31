@@ -17,8 +17,14 @@ interface ModalContextType {
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState(false);
+export const ModalProvider = ({
+  children,
+  defaultOpen = false,
+}: {
+  children: ReactNode;
+  defaultOpen?: boolean;
+}) => {
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
     <ModalContext.Provider value={{ open, setOpen }}>
@@ -26,6 +32,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
     </ModalContext.Provider>
   );
 };
+
 
 export const useModal = () => {
   const context = useContext(ModalContext);
@@ -35,9 +42,10 @@ export const useModal = () => {
   return context;
 };
 
-export function Modal({ children }: { children: ReactNode }) {
-  return <ModalProvider>{children}</ModalProvider>;
+export function Modal({ children, defaultOpen = false }: { children: ReactNode; defaultOpen?: boolean }) {
+  return <ModalProvider defaultOpen={defaultOpen}>{children}</ModalProvider>;
 }
+
 
 export const ModalTrigger = ({
   children,
@@ -63,8 +71,10 @@ export const ModalTrigger = ({
 export const ModalBody = ({
   children,
   className,
+  showCloseIcon = true,
 }: {
   children: ReactNode;
+  showCloseIcon?: boolean;
   className?: string;
 }) => {
   const { open } = useModal();
@@ -79,7 +89,7 @@ export const ModalBody = ({
 
   const modalRef = useRef(null);
   const { setOpen } = useModal();
-  useOutsideClick(modalRef, () => setOpen(false));
+  useOutsideClick(modalRef, () => setOpen(true));
 
   return (
     <AnimatePresence>
@@ -129,7 +139,7 @@ export const ModalBody = ({
               damping: 15,
             }}
           >
-            <CloseIcon />
+            {showCloseIcon && <CloseIcon />}
             {children}
           </motion.div>
         </motion.div>
@@ -190,8 +200,11 @@ const Overlay = ({ className }: { className?: string }) => {
   );
 };
 
-const CloseIcon = () => {
+const CloseIcon = ({ visible = true }: { visible?: boolean }) => {
   const { setOpen } = useModal();
+
+  if (!visible) return null; // Don't render anything if not visible
+
   return (
     <button
       onClick={() => setOpen(false)}
@@ -225,10 +238,10 @@ export const useOutsideClick = (
   callback: Function
 ) => {
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const listener = (event: any) => {
-      // DO NOTHING if the element being clicked is the target element or their children
-      if (!ref.current || ref.current.contains(event.target)) {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      // Check if event.target is a Node before calling contains
+      const target = event.target as Node; // Cast event.target to Node
+      if (!ref.current || ref.current.contains(target)) {
         return;
       }
       callback(event);
