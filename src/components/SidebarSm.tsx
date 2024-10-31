@@ -22,6 +22,7 @@ import { db } from "@/config/FirebaseConfig";
 export const Sidebarsm = () => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   const [userInfo, setUserInfo] = useState<{ firstname: string; lastname: string } | null>(null);
 
   const handleSignOut = () => {
