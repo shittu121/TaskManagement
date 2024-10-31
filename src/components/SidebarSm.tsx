@@ -16,39 +16,22 @@ import { ModeTogglesm } from './ui/DarkmodeSm';
 import { IoMdClose } from "react-icons/io";
 import { auth } from "@/config/FirebaseConfig"; 
 import { User } from "firebase/auth"; 
-import { doc, getDoc } from "firebase/firestore"; 
-import { db } from "@/config/FirebaseConfig"; 
 
 export const Sidebarsm = () => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  const [userInfo, setUserInfo] = useState<{ firstname: string; lastname: string } | null>(null);
 
   const handleSignOut = () => {
     auth.signOut().then(() => {
       console.log("User signed out");
-      setUserInfo(null);
     }).catch((error) => {
       console.error("Sign out error:", error);
     });
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        const userDoc = doc(db, "users", user.uid);
-        const userSnap = await getDoc(userDoc);
-        if (userSnap.exists()) {
-          setUserInfo(userSnap.data() as { firstname: string; lastname: string });
-        } else {
-          console.log("No such document!");
-        }
-      } else {
-        setUser(null);
-        setUserInfo(null);
-      }
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
     });
 
     return () => unsubscribe();
