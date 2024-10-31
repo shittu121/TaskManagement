@@ -9,7 +9,7 @@ import { isMobile } from "@/lib/mobileUtils";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
 import Image from "next/image";
-import Profile from "../../public/logo.svg";
+import Profile from "../../public/TaskFlow.png";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
@@ -25,7 +25,7 @@ export const Sidebar = () => {
             exit={{ x: -200 }}
             className="px-6  z-[100] bg-white border dark:bg-[#121212] dark:border-[#353232] py-10 max-w-[20rem] lg:w-fit  fixed lg:relative  h-screen left-0 flex flex-col justify-between"
           >
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden -mt-5">
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
@@ -52,7 +52,7 @@ export const Navigation = ({
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="flex flex-col space-y-6 my-10 relative z-[100] text-white">
+    <div className="flex flex-col my-10 relative z-[100] text-white">
       {navlinks.map((link: Navlink) => (
         <Link
           key={link.href}
@@ -86,13 +86,13 @@ export const Navigation = ({
 
 const SidebarHeader = () => {
   return (
-    <div className="flex space-x-2">
+    <div className="flex space-x-2 z-50 -pt-10">
       <Image
         src={Profile}
         alt="Avatar"
-        height="100"
+        height="70"
         width="100"
-        className="object-cover object-top rounded-full flex-shrink-0"
+        className="object-cover mx-auto h-32 rounded-full w-32 object-top flex-shrink-0"
       />
     </div>
   );

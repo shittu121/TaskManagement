@@ -22,7 +22,6 @@ import { db } from "@/config/FirebaseConfig";
 export const Sidebarsm = () => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userInfo, setUserInfo] = useState<{ firstname: string; lastname: string } | null>(null);
 
   const handleSignOut = () => {
@@ -54,7 +53,6 @@ export const Sidebarsm = () => {
     return () => unsubscribe();
   }, []);
 
-  // Dynamically update the links array based on authentication state
   const links = user
     ? [
         { label: "Dashboard", href: "/", icon: <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" /> },
@@ -62,7 +60,6 @@ export const Sidebarsm = () => {
         { label: "Progress", href: "#", icon: <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" /> },
         { label: "Team Members", href: "#", icon: <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" /> },
         { label: "Messages", href: "#", icon: <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" /> },
-        // Logout link without an href so it won't navigate
         { 
           label: "Logout", 
           href: "#", 
@@ -78,17 +75,16 @@ export const Sidebarsm = () => {
   const Logo = () => {
     return (
       <Link href="#" className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20">
-        <Image src={'/globe.svg'} alt="logo" width={50} height={50} />
-        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-medium text-black dark:text-white whitespace-pre">
-        </motion.span>
+        <Image src={'/TaskFlow.png'} alt="logo" width={60} height={60} className="rounded-full" />
+        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-medium text-black dark:text-white whitespace-pre"></motion.span>
       </Link>
     );
   };
 
   const LogoIcon = () => {
     return (
-      <Link href="#" className="font-normal flex items-center text-sm text-black py-1 relative z-20">
-        <Image src={'/globe.svg'} alt="logo" width={50} height={50} className="h-5 w-5" />
+      <Link href="#" className="font-normal flex items-center text-sm text-black relative z-20">
+        <Image src={'/TaskFlow.png'} alt="logo" width={50} height={50} className="h-5 rounded-full w-7" />
       </Link>
     );
   };
@@ -98,7 +94,7 @@ export const Sidebarsm = () => {
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 overflow-hidden">
           <div className="flex flex-col flex-1 pt-8 overflow-y-hidden overflow-x-hidden">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center -mt-3 justify-between">
               {open ? <Logo /> : <LogoIcon />}
               {open && (
                 <IoMdClose
@@ -107,26 +103,26 @@ export const Sidebarsm = () => {
                 />
               )}
             </div>
-            <div className="mt-10 flex flex-col gap-2">
+            <div className="mt-[4.5rem] flex space-y-5 text-xs flex-col gap-2">
               {links.map((link, idx) => (
                 <Link 
                   key={idx} 
-                  href={link.href} 
-                  className="flex items-center space-x-2"
+                  href={open ? link.href : "#"} // Prevent navigation if closed
+                  className={`flex items-center space-x-2 ${open ? '' : 'opacity-50 cursor-not-allowed'}`} // Add styling for disabled state
                   onClick={link.label === "Logout" ? (e) => {
                     e.preventDefault(); // Prevent default link behavior
                     handleSignOut(); // Call the sign-out function
                   } : undefined}
                 >
                   {link.icon}
-                  <span>{link.label}</span>
+                  {open && <span>{link.label}</span>} {/* Only show label when open */}
                 </Link>
               ))}
             </div>
           </div>
-          <div className="font-normal flex space-x-3.5 pb-16 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
+          <div className="font-normal flex space-x-3.5 pb-16 items-center text-xs h-7 w-7 text-black py-1 relative z-20">
             <ModeTogglesm />
-            <label className="flex-shrink-0">Switch Mode</label>
+            <label className="flex-shrink-0 dark:text-white">Switch Mode</label>
           </div>
         </SidebarBody>
       </Sidebar>
