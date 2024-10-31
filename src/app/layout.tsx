@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/Header";
 import { Sidebarsm } from "@/components/SidebarSm"
 import HeaderSm from "@/components/HeaderSm";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const geistSans = localFont({
@@ -41,6 +43,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="flex bg-neutral-100 overflow-y-hidden dark:bg-[#121212]">
+            <ToastContainer />
               <div className="sm-hidden md:hidden lg:flex">
                 <Sidebar />
               </div>
