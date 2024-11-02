@@ -4,14 +4,14 @@ import { DashboardCalendar } from "@/components/Calender";
 export default function Home() {
   return (
     <div className="py-8">
-       <h1 className="text-xl md:text-2xl lg:text-4xl px-8 lg:px-6 font-semibold">Dashboard</h1>
-       <div className="px-8 lg:px-6">
+       <h1 className="text-xl md:text-2xl lg:text-4xl px-7 lg:px-6 font-semibold">Dashboard</h1>
+       <div className="px-7 lg:px-6">
          <Auth />
        </div>
-       <div className="px-8 lg:px-6">
+       <div className="px-7 lg:px-6">
          <Card />
        </div>
-       <div className="px-8 lg:px-6">
+       <div className="px-7 lg:px-6">
        <DashboardCalendar />
        </div>
 
