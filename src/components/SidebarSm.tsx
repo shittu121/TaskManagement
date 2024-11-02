@@ -59,7 +59,7 @@ export const Sidebarsm = () => {
   const Logo = () => {
     return (
       <Link href="#" className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20">
-        <Image src={'/TaskFlow.png'} alt="logo" width={60} height={60} className="rounded-full" />
+        <Image src={'/TaskFlow.png'} alt="logo" width={70} height={70} className="" />
         <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-medium text-black dark:text-white whitespace-pre"></motion.span>
       </Link>
     );
@@ -68,7 +68,7 @@ export const Sidebarsm = () => {
   const LogoIcon = () => {
     return (
       <Link href="#" className="font-normal flex items-center text-sm text-black relative z-20">
-        <Image src={'/TaskFlow.png'} alt="logo" width={50} height={50} className="h-5 rounded-full w-7" />
+        <Image src={'/TaskFlow.png'} alt="logo" width={50} height={50} className="h-5 w-7" />
       </Link>
     );
   };

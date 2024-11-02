@@ -1,31 +1,30 @@
 import {
   IconArticle,
-  IconBolt,
-  IconBriefcase2,
-  IconMessage2,
 } from "@tabler/icons-react";
-import { DashboardIcon } from "@radix-ui/react-icons";
-
+import { RxDashboard } from "react-icons/rx";
+import { SiTask } from "react-icons/si";
+import { RiProgress2Line } from "react-icons/ri";
+import { RiTeamLine } from "react-icons/ri";
 export const navlinks = [
   {
     href: "/",
     label: "Dashboard",
-    icon: DashboardIcon,
+    icon: RxDashboard,
   },
   {
     href: "/task-tracker",
     label: "Task Tracker",
-    icon: IconBolt,
+    icon: SiTask,
   },
   {
-    href: "/about",
+    href: "/progress",
     label: "Progress",
-    icon: IconMessage2,
+    icon: RiProgress2Line,
   },
   {
-    href: "/projects",
+    href: "/team-members",
     label: "Team Members",
-    icon: IconBriefcase2,
+    icon: RiTeamLine,
   },
   {
     href: "/blog",

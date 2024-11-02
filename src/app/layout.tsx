@@ -43,11 +43,11 @@ export default function RootLayout({
           >
             <div className="flex bg-neutral-100 overflow-y-auto overflow-x-hidden dark:bg-[#121212]">
             <ToastContainer />
-              <div className="lg:w-[20rem]">
+              <div className="w-[50px] lg:w-[20rem] z-[1000]">
               <div className="sm-hidden fixed md:hidden lg:flex">
                 <Sidebar />
               </div>
-              <div className="lg:hidden z-50 fixed max-w-[300px]">
+              <div className="lg:hidden fixed max-w-[300px]">
                 <Sidebarsm />
               </div>
               </div>
@@ -56,7 +56,8 @@ export default function RootLayout({
                   <Header />
                 </header>
                 
-               <div className="px-20 w-full mt-8 lg:mt-36">
+                
+               <div className=" w-full">
                  {children}
                </div>
               </div>

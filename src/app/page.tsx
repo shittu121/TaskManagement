@@ -3,10 +3,10 @@ import { Card } from "@/components/Card";
 import { DashboardCalendar } from "@/components/Calender";
 export default function Home() {
   return (
-    <div className="">
-       <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Dashboard</h1>
+    <div className="p-8">
+       <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold">Dashboard</h1>
        <Auth />
-       <div className="block lg:flex items-center gap-5">
+       <div className="">
        <Card />
        <DashboardCalendar />
        </div>

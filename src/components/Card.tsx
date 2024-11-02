@@ -3,7 +3,7 @@ import { GlareCard } from "@/components/ui/glare-card";
 
 export function Card() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 relative gap-20 lg:gap-10 py-10">
+    <div className="grid grid-cols-2 md:grid-cols-3 relative gap-10 lg:gap-10 py-10">
       <GlareCard className="p-8 space-y-4 text-white">
         <div className="flex gap-2 flex-row items-center">
         <svg
