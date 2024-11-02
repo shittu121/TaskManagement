@@ -43,7 +43,7 @@ export default function RootLayout({
           >
             <div className="flex bg-neutral-100 overflow-y-auto overflow-x-hidden dark:bg-[#121212]">
             <ToastContainer />
-              <div className="w-[50px] lg:w-[20rem] z-[1000]">
+              <div className="w-[50px] lg:w-[20rem] z-50">
               <div className="sm-hidden fixed md:hidden lg:flex">
                 <Sidebar />
               </div>
