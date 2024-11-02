@@ -87,7 +87,7 @@ export const Sidebarsm = () => {
                 />
               )}
             </div>
-            <div className="mt-[4.5rem] flex space-y-5 text-xs flex-col gap-2">
+            <div className="mt-[4.5rem] flex space-y-5 text-sm flex-col gap-2">
               {links.map((link, idx) => (
                 <Link 
                   key={idx} 
@@ -104,7 +104,7 @@ export const Sidebarsm = () => {
               ))}
             </div>
           </div>
-          <div className="font-normal flex space-x-3.5 pb-16 items-center text-xs h-7 w-7 text-black py-1 relative z-20">
+          <div className="font-normal flex space-x-3.5 pb-16 items-center text-sm h-7 w-7 text-black py-1 relative z-20">
             <ModeTogglesm />
             <label className="flex-shrink-0 dark:text-white">Switch Mode</label>
           </div>

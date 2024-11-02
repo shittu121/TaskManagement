@@ -19,7 +19,7 @@ const Togglesm = () => {
   };
 
   return (
-    <div className="lg:hidden z-[100]">
+    <div className="lg:hidden mx-4 z-[100]">
       <div className="flex md:mx-5 py-4 text-sm items-center justify-between">
 
         {/* Mobile Toggle Button */}

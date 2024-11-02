@@ -5,7 +5,6 @@ import { Sidebar } from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/Header";
 import { Sidebarsm } from "@/components/SidebarSm"
-import HeaderSm from "@/components/HeaderSm";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -42,22 +41,22 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex bg-neutral-100 overflow-y-hidden dark:bg-[#121212]">
+            <div className="flex bg-neutral-100 overflow-y-auto overflow-x-hidden dark:bg-[#121212]">
             <ToastContainer />
-              <div className="sm-hidden md:hidden lg:flex">
+              <div className="lg:w-[20rem]">
+              <div className="sm-hidden fixed md:hidden lg:flex">
                 <Sidebar />
               </div>
-              <div className="lg:hidden">
+              <div className="lg:hidden z-50 fixed max-w-[300px]">
                 <Sidebarsm />
               </div>
-              <div className="w-full h-screen overflow-y-auto">
-                <div className=" fixed lg:w-[65rem]">
+              </div>
+              <div className="w-full h-screen">
+                <header className="w-full bg-white lg:w-[65rem] z-50">
                   <Header />
-                </div>
-                <div className="lg:hidden fixed w-full">
-                  <HeaderSm />
-                </div>
-               <div className="m-5 mt-32 lg:mt-36">
+                </header>
+                
+               <div className="px-20 w-full mt-8 lg:mt-36">
                  {children}
                </div>
               </div>
