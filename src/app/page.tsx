@@ -3,7 +3,7 @@ import { Card } from "@/components/Card";
 import { DashboardCalendar } from "@/components/Calender";
 export default function Home() {
   return (
-    <div className="py-8 mx-10">
+    <div className="py-8 px-12">
        <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold">Dashboard</h1>
        <Auth />
        <div className="">
