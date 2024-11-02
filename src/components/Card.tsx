@@ -1,74 +1,47 @@
 "use client"
 import { GlareCard } from "@/components/ui/glare-card";
+import { GoProjectSymlink } from "react-icons/go";
+import { FaRegUser } from "react-icons/fa";
+import { FaSackDollar } from "react-icons/fa6";
+import { ChartDashboard } from "./DashboardChart";
 
 export function Card() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 relative gap-2 lg:gap-10 py-10">
-      <GlareCard className="p-8 space-y-4 text-white">
+      <GlareCard className="px-5 py-8 lg:px-8 lg:py-8 md:px-8 md:py-8 space-y-3 text-white">
         <div className="flex gap-2 flex-row items-center">
-        <svg
-          width="66"
-          height="65"
-          viewBox="0 0 66 65"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white"
-        >
-          <path
-            d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-            stroke="currentColor"
-            strokeWidth="15"
-            strokeMiterlimit="3.86874"
-            strokeLinecap="round"
-          />
-        </svg>
+        <GoProjectSymlink className="h-6 w-6 text-white" />
         <h1>Projects</h1>
         </div>
+        <div className="flex items-center">
         <h1 className="font-bold text-2xl">2040</h1>
+        <ChartDashboard />
+
+        </div>
+
       </GlareCard>
+
       <GlareCard className="text-white p-8 space-y-4">
       <div className="flex gap-2 flex-row items-center">
-        <svg
-          width="66"
-          height="65"
-          viewBox="0 0 66 65"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white"
-        >
-          <path
-            d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-            stroke="currentColor"
-            strokeWidth="15"
-            strokeMiterlimit="3.86874"
-            strokeLinecap="round"
-          />
-        </svg>
+        <FaRegUser className="w-6 h-6 text-white" />
         <h1>Clients</h1>
         </div>
+        <div className="flex items-center">
         <h1 className="font-bold text-2xl">158</h1>
+        <ChartDashboard lineColor="rgb(255, 99, 132)" />
+
+        </div>
       </GlareCard>
       <GlareCard className="text-white p-8 space-y-4">
       <div className="flex gap-2 flex-row items-center">
-        <svg
-          width="66"
-          height="65"
-          viewBox="0 0 66 65"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white"
-        >
-          <path
-            d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-            stroke="currentColor"
-            strokeWidth="15"
-            strokeMiterlimit="3.86874"
-            strokeLinecap="round"
-          />
-        </svg>
+        <FaSackDollar className="w-6 h-6 text-white" />
         <h1>Revenue</h1>
         </div>
+        <div className="flex items-center">
         <h1 className="font-bold text-2xl">$75K</h1>
+        <ChartDashboard lineColor="#4caf50" />
+
+        </div>
       </GlareCard>
     </div>
   );
