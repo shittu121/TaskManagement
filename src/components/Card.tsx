@@ -7,7 +7,7 @@ import { ChartDashboard } from "./DashboardChart";
 
 export function Card() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 relative gap-y-2 lg:gap-10 py-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 relative gap-y-2 lg:gap-10 py-10">
       <GlareCard className="px-5 py-8 lg:px-8 lg:py-8 md:px-8 md:py-8 space-y-3 text-white">
         <div className="flex gap-2 flex-row items-center">
         <GoProjectSymlink className="h-6 w-6 text-white" />

@@ -32,8 +32,8 @@ const chartConfig = {
 // Accepting a lineColor prop to change the line color dynamically
 export function ChartDashboard({ lineColor = "var(--color-desktop)" }: { lineColor?: string }) {
   return (
-    <Card className="w-20 lg:w-32 md:w-32 h-20 bg-slate-950 border-0">
-      <CardContent className="pt-8 lg:pt-6 md:pt-6 -ml-3">
+    <Card className="w-32 lg:w-32 md:w-32 h-20 bg-slate-950 border-0">
+      <CardContent className="pt-6 lg:pt-6 md:pt-6 -ml-3">
         <ChartContainer config={chartConfig}>
           <LineChart
             data={chartData}
