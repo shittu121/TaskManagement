@@ -87,7 +87,7 @@ const SidebarHeader = () => {
         alt="Avatar"
         height="70"
         width="100"
-        className="object-cover mx-auto h-32  w-32 object-top flex-shrink-0"
+        className="object-cover mx-auto dark:text-white h-32  w-32 object-top flex-shrink-0"
       />
     </div>
   );

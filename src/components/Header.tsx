@@ -10,6 +10,7 @@ import { auth } from "@/config/FirebaseConfig";
 import { User } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/config/FirebaseConfig";
+import Image from "next/image"
 
 const Header = () => {
   const placeholders = [
@@ -71,6 +72,13 @@ const Header = () => {
 
   return (
     <div className="h-24 border flex bg-white dark:bg-[#121212] dark:border-[#353232] w-full">
+      <Image
+        src="/TaskFlow.png"
+        alt="Avatar"
+        height="70"
+        width="100"
+        className="object-cover mx-auto lg:hidden dark:text-white h-24  w-24 object-top flex-shrink-0"
+      />
       <div className="h-[40rem] w-full px-4 mt-5 lg:ml-12">
         <PlaceholdersAndVanishInput
           placeholders={placeholders}
