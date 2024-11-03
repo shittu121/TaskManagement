@@ -7,6 +7,8 @@ import {
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 import SigninForm from "./signin-form";
+import { FiLogIn } from "react-icons/fi";
+
 export function LogInModal() {
   
   return (
@@ -17,7 +19,7 @@ export function LogInModal() {
             Sign In
           </span>
           <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
-            ✈️
+            <FiLogIn className="dark:text-black h-6 w-6" />
           </div>
         </ModalTrigger>
         <ModalBody>

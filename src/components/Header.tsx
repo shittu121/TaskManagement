@@ -14,11 +14,11 @@ import Image from "next/image"
 
 const Header = () => {
   const placeholders = [
-    "What's the first rule of Fight Club?",
+    "Who are my Team Members?",
     "Who is Tyler Durden?",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
+    "Where is Task Progress Hiding?",
+    "Wanna Add Team Members",
+    "Need Help?",
   ];
 
   const [isSearchOpen, setSearchOpen] = useState(false);
@@ -67,19 +67,19 @@ const Header = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Optionally display a loading state
+    return <div className="dark:bg-[#121212] dark:text-white">Loading...</div>; // Optionally display a loading state
   }
 
   return (
-    <div className="h-24 border flex bg-white dark:bg-[#121212] dark:border-[#353232] w-full">
+    <div className="h-24 border flex justify-between bg-white dark:bg-[#121212] dark:border-[#353232] w-full">
       <Image
         src="/TaskFlow.png"
         alt="Avatar"
         height="70"
-        width="100"
+        width="70"
         className="object-cover mx-auto lg:hidden dark:text-white h-24  w-24 object-top flex-shrink-0"
       />
-      <div className="h-[40rem] w-full px-4 mt-5 lg:ml-12">
+      <div className="h-[40rem] w-full px-4 mt-5 lg:ml">
         <PlaceholdersAndVanishInput
           placeholders={placeholders}
           onChange={handleChange}
@@ -110,7 +110,7 @@ const Header = () => {
         )}
       </div>
 
-      <div className="sm-hidden md:hidden lg:flex">
+      <div className="flex mt-7 lg:mt-0 md:mt-7">
         <ModeToggle />
       </div>
 

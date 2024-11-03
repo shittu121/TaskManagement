@@ -7,6 +7,8 @@ import {
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 import SignupForm from "./signup-form";
+import { FiUserPlus } from "react-icons/fi";
+
 
 export function SignUpModal() {
   
@@ -18,7 +20,7 @@ export function SignUpModal() {
             Sign Up
           </span>
           <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
-            ✈️
+            <FiUserPlus className="dark:text-black h-6 w-6" />
           </div>
         </ModalTrigger>
         <ModalBody>

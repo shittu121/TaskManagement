@@ -59,7 +59,7 @@ export const Navigation = ({
           href={link.href}
           onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
-            "text-black dark:text-white hover:text-gray-500 transition duration-200  flex items-center space-x-2 py-5 px-2 rounded-md text-sm",
+            "text-black dark:text-white hover:text-gray-500 transition duration-200  flex items-center space-x-2 py-5 px-2 rounded-md text-lg",
             isActive(link.href) && "bg-gray-200 dark:text-black"
           )}
         >
@@ -67,7 +67,7 @@ export const Navigation = ({
           {link.icon && (
             <link.icon
               className={twMerge(
-                "h-4 w-4 flex-shrink-0",
+                "h-6 w-6 flex-shrink-0",
                 isActive(link.href) && "text-sky-500"
               )}
             />
