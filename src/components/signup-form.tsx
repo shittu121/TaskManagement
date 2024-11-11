@@ -7,10 +7,8 @@ import { cn } from "@/lib/utils";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "@/config/FirebaseConfig"; // Import Firebase Auth and Firestore
 import { doc, setDoc } from "firebase/firestore"; // Firestore functions
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation"; // Use next/navigation for the app router
-
-
 
 export default function SignupForm() {
   const router = useRouter();
@@ -20,12 +18,13 @@ export default function SignupForm() {
     lastname: "",
     email: "",
     password: "",
+    role: "User", // New role state for admin or user
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { email, password, firstname, lastname } = formData;
+    const { email, password, firstname, lastname, role } = formData;
 
     try {
       // Create user with email and password
@@ -33,14 +32,15 @@ export default function SignupForm() {
       const user = userCredential.user;
 
       console.log("User registered successfully:", user);
-      toast("User registered successfully:")
+      toast("User registered successfully!");
 
-      // Save additional user information (first name and last name) to Firestore
+      // Save additional user information (first name, last name, role) to Firestore
       await setDoc(doc(db, "users", user.uid), {
         firstname: firstname,
         lastname: lastname,
         email: email,
         createdAt: new Date(),
+        role: role, // Store the role (admin or user)
       });
 
       console.log("User data stored in Firestore");
@@ -52,13 +52,14 @@ export default function SignupForm() {
         lastname: "",
         email: "",
         password: "",
+        role: "User", // Reset role to "User" after sign-up
       });
     } catch (error) {
       console.error("Error registering user:", error);
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
@@ -114,6 +115,21 @@ export default function SignupForm() {
             onChange={handleInputChange}
           />
         </LabelInputContainer>
+
+        {/* Admin Role Selection */}
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="role">Role</Label>
+          <select
+            id="role"
+            value={formData.role}
+            onChange={handleInputChange}
+            className="form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </LabelInputContainer>
+
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"

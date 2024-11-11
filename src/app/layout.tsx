@@ -49,13 +49,13 @@ export default function RootLayout({
               </div>
               
               </div>
-              <div className="w-full h-screen">
+              <div className="w-full h-screen dark:bg-[#121212] ">
                 <header className="w-full bg-white lg:w-[65rem] z-50">
                   <Header />
                 </header>
                 
                 
-               <div className=" w-full">
+               <div className=" w-full dark:bg-[#121212]">
                  {children}
                </div>
               </div>

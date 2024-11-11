@@ -12,7 +12,7 @@ export const navlinks = [
     icon: RxDashboard,
   },
   {
-    href: "/task-tracker",
+    href: "/tasks",
     label: "Task Tracker",
     icon: SiTask,
   },
@@ -22,8 +22,8 @@ export const navlinks = [
     icon: RiProgress2Line,
   },
   {
-    href: "/team-members",
-    label: "Team Members",
+    href: "/task-tracker",
+    label: "Assign Task",
     icon: RiTeamLine,
   },
   {
