@@ -9,8 +9,6 @@ import {
   Calendar,
   CreditCard,
   Settings,
-  Smile,
-  User,
 } from "lucide-react";
 import {
   Command,
@@ -23,6 +21,10 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { IoMdClose } from "react-icons/io";
+import { RxDashboard } from "react-icons/rx";
+import { RiProgress2Line } from "react-icons/ri";
+
+
 
 export function SearchCommand({ onClose }: { onClose: () => void }) {
   return (
@@ -38,11 +40,11 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
                 <CommandGroup heading="Suggestions">
                   <CommandItem>
                     <Calendar />
-                    <span>Calendar</span>
+                    <span>My Tasks</span>
                   </CommandItem>
                   <CommandItem>
-                    <Smile />
-                    <span>Search Emoji</span>
+                    <RxDashboard />
+                    <span>Dashboard</span>
                   </CommandItem>
                   <CommandItem disabled>
                     <Calculator />
@@ -52,8 +54,8 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
                 <CommandSeparator />
                 <CommandGroup heading="Settings">
                   <CommandItem>
-                    <User />
-                    <span>Profile</span>
+                    <RiProgress2Line />
+                    <span>Progress</span>
                     <CommandShortcut>⌘P</CommandShortcut>
                   </CommandItem>
                   <CommandItem>

@@ -7,7 +7,7 @@ import { RiProgress2Line } from "react-icons/ri";
 import { RiTeamLine } from "react-icons/ri";
 export const navlinks = [
   {
-    href: "/",
+    href: "/dashboard",
     label: "Dashboard",
     icon: RxDashboard,
   },

@@ -93,7 +93,7 @@ const Header = () => {
 
       <div className="sm-hidden md:hidden lg:flex">
         {user ? (
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 sm-hidden">
             <h1 className="text-lg flex-shrink-0 -ml-64">Welcome, {userInfo?.firstname}</h1>
             <button
               onClick={handleSignOut}
@@ -103,7 +103,7 @@ const Header = () => {
             </button>
           </div>
         ) : (
-          <div className="flex space-x-5">
+          <div className="flex sm-hidden space-x-5">
             <SignUpModal />
             <LogInModal />
           </div>
