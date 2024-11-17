@@ -5,6 +5,8 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db, auth } from "@/config/FirebaseConfig";
 import { toast } from "react-toastify";
 import { User } from "firebase/auth";
+import ProtectedRoute from "@/components/ProtectedRoute";
+
 
 interface Task {
   id: string;
@@ -136,7 +138,9 @@ const TaskPage = () => {
   }, [user, isAdmin, userInfo, fetchTasks]); // Added userInfo as a dependency
 
   return (
-    <div className="w-full p-8 bg-white dark:bg-black shadow-input rounded-md">
+    <div className="">
+      <ProtectedRoute>
+      <div className="w-full p-8 bg-white dark:bg-black shadow-input rounded-md">
       <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200 mb-6">
         {isAdmin ? "All Tasks" : "My Tasks"}
       </h2>
@@ -174,6 +178,8 @@ const TaskPage = () => {
           )}
         </div>
       )}
+      </div>
+      </ProtectedRoute>
     </div>
   );
 };
