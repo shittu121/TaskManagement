@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function VortexBg() {
   return (
-    <div className="w-full h-[90vh] overflow-hidden"> {/* Changed width to full */}
+    <div className="w-full h-fit overflow-hidden"> {/* Changed width to full */}
       <Vortex
         backgroundColor="black"
         rangeY={800}

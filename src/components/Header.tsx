@@ -11,7 +11,6 @@ import { User } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/config/FirebaseConfig";
 import Image from "next/image"
-import Link from "next/link";
 
 const Header = () => {
   const placeholders = [
@@ -73,7 +72,6 @@ const Header = () => {
 
   return (
     <div className="h-24 border flex justify-between bg-white dark:bg-[#121212] dark:border-[#353232] w-full">
-      <Link href="/">
       <Image
         src="/TaskFlow.png"
         alt="Avatar"
@@ -81,7 +79,6 @@ const Header = () => {
         width="70"
         className="object-cover mx-auto lg:hidden dark:text-white h-24  w-24 object-top flex-shrink-0"
       />
-      </Link>
       <div className="h-[40rem] w-full px-4 mt-5 lg:ml">
         <PlaceholdersAndVanishInput
           placeholders={placeholders}
