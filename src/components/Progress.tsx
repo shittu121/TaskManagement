@@ -20,21 +20,25 @@ interface Task {
   deadline: string;
 }
 
-const TaskPage = () => {
+const Progress = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [userInfo, setUserInfo] = useState<{ firstname: string; email: string } | null>(null);
 
+  // Fetch tasks based on user role and status
   const fetchTasks = useCallback(async (user: User | null, isAdmin: boolean) => {
     if (!user) return;
 
     setLoading(true);
     try {
       const taskQuery = isAdmin
-        ? query(collection(db, "tasks"), where("adminAddedBy", "==", userInfo?.firstname))
-        : query(collection(db, "tasks"), where("assignedTo", "array-contains", user.email));
+        ? collection(db, "tasks") // Admin sees all tasks
+        : query(
+            collection(db, "tasks"),
+            where("assignedTo", "array-contains", user.email)
+          ); // Users see tasks assigned to them
 
       const querySnapshot = await getDocs(taskQuery);
 
@@ -52,9 +56,9 @@ const TaskPage = () => {
 
       setTasks(fetchedTasks);
 
-      // if (fetchedTasks.length === 0) {
-      //   toast.info("No tasks found.");
-      // }
+    //   if (fetchedTasks.length === 0) {
+    //     toast.info("No tasks found.");
+    //   }
 
     } catch (error) {
       toast.error("Error fetching tasks.");
@@ -62,8 +66,9 @@ const TaskPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [userInfo]);
+  }, []);
 
+  // Check if user is an admin
   const checkIfAdmin = useCallback(async (currentUser: User | null) => {
     if (currentUser) {
       try {
@@ -81,6 +86,7 @@ const TaskPage = () => {
     }
   }, []);
 
+  // Update task status in Firestore and state
   const updateTaskStatus = async (taskId: string, newStatus: string) => {
     try {
       await updateDoc(doc(db, "tasks", taskId), { status: newStatus });
@@ -96,6 +102,7 @@ const TaskPage = () => {
     }
   };
 
+  // Listen to auth state changes
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
       setUser(currentUser);
@@ -106,13 +113,14 @@ const TaskPage = () => {
         }
       } else {
         setUserInfo(null);
-        setTasks([]);
+        setTasks([]); // Clear tasks on logout
       }
       await checkIfAdmin(currentUser);
     });
     return () => unsubscribe();
   }, [checkIfAdmin]);
 
+  // Fetch tasks when user or admin status changes
   useEffect(() => {
     if (user && userInfo) {
       fetchTasks(user, isAdmin);
@@ -124,7 +132,7 @@ const TaskPage = () => {
       <ProtectedRoute>
         <div className="w-full p-8 bg-white dark:bg-black shadow-input rounded-md">
           <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200 mb-6">
-            {isAdmin ? "All Tasks" : "My Tasks"}
+            {isAdmin ? "All Tasks Progress" : "My Tasks Progress"}
           </h2>
 
           {loading ? (
@@ -147,7 +155,7 @@ const TaskPage = () => {
                       Project: {task.projectName}
                     </p>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Assigned to you:{" "}
+                      Assigned to:{" "}
                       {task.assignedTo.map((userEmail, index) => (
                         <span key={index}>
                           {userEmail}
@@ -191,4 +199,4 @@ const TaskPage = () => {
   );
 };
 
-export default TaskPage;
+export default Progress;

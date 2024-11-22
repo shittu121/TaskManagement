@@ -22,7 +22,7 @@ export const navlinks = [
     icon: RiProgress2Line,
   },
   {
-    href: "/task-tracker",
+    href: "/assign-task",
     label: "Assign Task",
     icon: RiTeamLine,
   },

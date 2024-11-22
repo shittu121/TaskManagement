@@ -1,12 +1,11 @@
 import React from 'react'
-import { VortexBg } from '../../components/VortexBackground'
-
-const Progress = () => {
+import Progress from '@/components/Progress'
+const ProgressPage = () => {
   return (
     <div>
-      <VortexBg />
+      <Progress />
     </div>
   )
 }
 
-export default Progress
+export default ProgressPage
