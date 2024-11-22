@@ -81,7 +81,7 @@ export const Navigation = ({
 
 const SidebarHeader = () => {
   return (
-    <div className="flex space-x-2 z-50 -mt-5">
+    <Link href="/" className="flex space-x-2 z-50 -mt-5">
       <Image
         src={Profile}
         alt="Avatar"
@@ -89,6 +89,6 @@ const SidebarHeader = () => {
         width="100"
         className="object-cover mx-auto dark:text-white h-32  w-32 object-top flex-shrink-0"
       />
-    </div>
+    </Link>
   );
 };

@@ -172,7 +172,7 @@ const Progress = () => {
                     <p className="text-gray-600 dark:text-gray-300">
                       Deadline: {task.deadline}
                     </p>
-                    <div className="flex items-center">
+                    <div className="flex items-center my-2">
                       <label className="text-gray-600 dark:text-gray-300 mr-2">
                         Status:
                       </label>

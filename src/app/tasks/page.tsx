@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db, auth } from "@/config/FirebaseConfig";
 import { toast } from "react-toastify";
@@ -14,10 +14,8 @@ interface Task {
   description: string;
   projectName: string;
   assignedTo: string[];
-  status: string;
   createdAt: string;
   createdBy: string; // Admin's name
-  deadline: string;
 }
 
 const TaskPage = () => {
@@ -81,20 +79,7 @@ const TaskPage = () => {
     }
   }, []);
 
-  const updateTaskStatus = async (taskId: string, newStatus: string) => {
-    try {
-      await updateDoc(doc(db, "tasks", taskId), { status: newStatus });
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === taskId ? { ...task, status: newStatus } : task
-        )
-      );
-      toast.success(`Task status updated to "${newStatus}"`);
-    } catch (error) {
-      console.error("Error updating task status:", error);
-      toast.error("Failed to update task status.");
-    }
-  };
+  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
@@ -161,23 +146,7 @@ const TaskPage = () => {
                     <p className="text-gray-600 dark:text-gray-300">
                       Created at: {task.createdAt}
                     </p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Deadline: {task.deadline}
-                    </p>
-                    <div className="flex items-center">
-                      <label className="text-gray-600 dark:text-gray-300 mr-2">
-                        Status:
-                      </label>
-                      <select
-                        value={task.status}
-                        onChange={(e) => updateTaskStatus(task.id, e.target.value)}
-                        className="border border-gray-300 rounded-md px-2 py-1 dark:bg-gray-700 dark:text-gray-300"
-                      >
-                        <option value="Pending">Pending</option>
-                        <option value="InProgress">InProgress</option>
-                        <option value="Completed">Completed</option>
-                      </select>
-                    </div>
+                    
                   </div>
                 ))
               ) : (
