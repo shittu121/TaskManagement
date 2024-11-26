@@ -38,18 +38,18 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup heading="Suggestions">
+                  <Link href="/tasks">
                   <CommandItem>
-                    <Link href="/tasks">
                     <Calendar />
                     <span>My Tasks</span>
-                    </Link>
                   </CommandItem>
-                  <CommandItem>
+                  </Link>
                   <Link href="/dashboard">
+                  <CommandItem>
                     <RxDashboard />
                     <span>Dashboard</span>
-                  </Link>
                   </CommandItem>
+                  </Link>
                   <CommandItem disabled>
                     <Calculator />
                     <span>Calculator</span>
@@ -57,13 +57,13 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
                 </CommandGroup>
                 <CommandSeparator />
                 <CommandGroup heading="Settings">
-                  <CommandItem>
                   <Link href="/progress">
+                  <CommandItem>
                     <RiProgress2Line />
                     <span>Progress</span>
                     <CommandShortcut>⌘P</CommandShortcut>
-                  </Link>
                   </CommandItem>
+                  </Link>
                   <CommandItem>
                     <CreditCard />
                     <span>Billing</span>

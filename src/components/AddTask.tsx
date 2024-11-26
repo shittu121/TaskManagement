@@ -173,7 +173,7 @@ const AddTask = () => {
             value={formData.description}
             onChange={handleInputChange}
             disabled={loading}
-            className="h-10 resize-none"
+            className="h-20 resize-none"
           />
         </div>
 
