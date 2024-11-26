@@ -23,7 +23,7 @@ import {
 import { IoMdClose } from "react-icons/io";
 import { RxDashboard } from "react-icons/rx";
 import { RiProgress2Line } from "react-icons/ri";
-
+import Link from "next/link";
 
 
 export function SearchCommand({ onClose }: { onClose: () => void }) {
@@ -39,12 +39,16 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup heading="Suggestions">
                   <CommandItem>
+                    <Link href="/tasks">
                     <Calendar />
                     <span>My Tasks</span>
+                    </Link>
                   </CommandItem>
                   <CommandItem>
+                  <Link href="/dashboard">
                     <RxDashboard />
                     <span>Dashboard</span>
+                  </Link>
                   </CommandItem>
                   <CommandItem disabled>
                     <Calculator />
@@ -54,9 +58,11 @@ export function SearchCommand({ onClose }: { onClose: () => void }) {
                 <CommandSeparator />
                 <CommandGroup heading="Settings">
                   <CommandItem>
+                  <Link href="/progress">
                     <RiProgress2Line />
                     <span>Progress</span>
                     <CommandShortcut>⌘P</CommandShortcut>
+                  </Link>
                   </CommandItem>
                   <CommandItem>
                     <CreditCard />
